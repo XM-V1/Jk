@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Garena Diamonds Demo</title>
+
+<style>
+:root{
+  --red:#e50914;
+  --soft:#f5f5f5;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family: Arial, Helvetica, sans-serif;
+  background:#ffffff;
+  color:#222;
+}
+.container{
+  max-width:420px;
+  margin:0 auto;
+  padding:16px;
+}
+.header{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  justify-content:center;
+  margin:20px 0;
+}
+.header img{
+  width:36px;
+  height:36px;
+}
+.header h1{
+  margin:0;
+  font-size:22px;
+  font-weight:bold;
+}
+.card{
+  background:#fff;
+  border-radius:16px;
+  padding:18px;
+  box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+.input{
+  width:100%;
+  margin-bottom:12px;
+}
+.input label{
+  font-size:13px;
+  display:block;
+  margin-bottom:6px;
+}
+.input input{
+  width:100%;
+  padding:14px;
+  border-radius:10px;
+  border:1px solid #ddd;
+  font-size:16px;
+}
+.notice{
+  font-size:12px;
+  color:#666;
+  margin:8px 0 14px;
+}
+button{
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:12px;
+  font-size:18px;
+  font-weight:bold;
+  color:#fff;
+  background:var(--red);
+  cursor:pointer;
+  animation:pulse 1.8s infinite;
+}
+@keyframes pulse{
+  0%{box-shadow:0 0 0 0 rgba(229,9,20,.6)}
+  70%{box-shadow:0 0 0 12px rgba(229,9,20,0)}
+  100%{box-shadow:0 0 0 0 rgba(229,9,20,0)}
+}
+.footer-diamond{
+  text-align:center;
+  margin-top:16px;
+}
+.footer-diamond img{
+  width:80px;
+}
+
+/* diamond rain */
+.diamond{
+  position:fixed;
+  top:-40px;
+  width:26px;
+  height:26px;
+  pointer-events:none;
+  animation:fall linear forwards;
+}
+@keyframes fall{
+  to{
+    transform:translateY(110vh) rotate(360deg);
+    opacity:0;
+  }
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <div class="header">
+    <!-- oddiy demo logo (o‘zing xohlagan rasm bilan almashtirishing mumkin) -->
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/Garena_logo.svg" alt="Garena">
+    <h1>Garena</h1>
+  </div>
+
+  <!-- Card -->
+  <div class="card">
+    <div class="input">
+      <label>Gmail</label>
+      <input type="email" placeholder="example@gmail.com">
+    </div>
+
+    <div class="input">
+      <label>Code</label>
+      <input type="password" placeholder="Enter code">
+    </div>
+
+    <div class="input">
+      <label>Diamonds Amount</label>
+      <input type="number" placeholder="e.g. 520">
+    </div>
+
+    <div class="input">
+      <label>Free Fire ID</label>
+      <input type="text" placeholder="FF ID">
+    </div>
+
+    <div class="notice">
+      This is a demo page. Data is not sent anywhere.
+    </div>
+
+    <button onclick="rainDiamonds()">Continue</button>
+  </div>
+
+  <!-- Bottom diamond image -->
+  <div class="footer-diamond">
+    <img src="https://cdn-icons-png.flaticon.com/512/3522/3522093.png" alt="Diamond">
+  </div>
+
+</div>
+
+<script>
+function rainDiamonds(){
+  for(let i=0;i<25;i++){
+    const d=document.createElement("img");
+    d.src="https://cdn-icons-png.flaticon.com/512/3522/3522093.png";
+    d.className="diamond";
+    d.style.left=Math.random()*100+"vw";
+    d.style.animationDuration=(2+Math.random()*2)+"s";
+    document.body.appendChild(d);
+    setTimeout(()=>d.remove(),4000);
+  }
+}
+</script>
+</body>
+  </html>
